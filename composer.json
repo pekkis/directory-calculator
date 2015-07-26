@@ -1,0 +1,29 @@
+{
+    "name": "pekkis/pathfinder",
+    "description": "Path- and file name handling / calculation library",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": ["path", "file", "utility"],
+    "authors": [
+        {
+            "name": "Mikko Forsström",
+            "email": "puhemies@diktaattoriporssi.com"
+        }
+    ],
+    "minimum-stability": "stable",
+
+    "require": {
+        "php": ">=5.5.0"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "ramsey/uuid": "~2.8"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Pekkis\\Pathfinder": "library/"
+        }
+    }
+}
