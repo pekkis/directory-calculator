@@ -13,4 +13,11 @@ This library calculates more or less safe directories for objects identifiable b
 ```php
 <?php
 
+use Pekkis\DirectoryCalculator\DirectoryCalculator;
+use Pekkis\DirectoryCalculator\Strategy\UniversalLeveledStrategy;
+
+$calculator = new DirectoryCalculator(new UniversalLeveledStrategy());
+
+$directory = $calculator->calculateDirectory($someObjectImplementingRequiredInterface);
+
 ```
