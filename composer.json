@@ -1,9 +1,9 @@
 {
-    "name": "pekkis/pathfinder",
-    "description": "Path- and file name handling / calculation library",
+    "name": "pekkis/directory-calculator",
+    "description": "Directory calculation library",
     "type": "library",
     "license": "BSD-3-Clause",
-    "keywords": ["path", "file", "utility"],
+    "keywords": ["filesystem", "directory", "utility"],
     "authors": [
         {
             "name": "Mikko Forsström",
