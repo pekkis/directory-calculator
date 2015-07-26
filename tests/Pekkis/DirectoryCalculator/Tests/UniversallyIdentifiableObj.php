@@ -1,8 +1,8 @@
 <?php
 
-namespace Pekkis\Pathfinder\Tests;
+namespace Pekkis\DirectoryCalculator\Tests;
 
-use Pekkis\Pathfinder\UniversallyIdentifiable;
+use Pekkis\DirectoryCalculator\UniversallyIdentifiable;
 
 class UniversallyIdentifiableObj extends IdentifiableObj implements UniversallyIdentifiable
 {

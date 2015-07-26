@@ -1,17 +1,17 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\DirectoryIdCalculator;
+namespace Pekkis\DirectoryCalculator\Strategy;
 
-use Pekkis\PathFinder\Identifiable;
+use Pekkis\DirectoryCalculator\Identifiable;
 
-interface DirectoryIdCalculator
+interface Strategy
 {
     /**
      * Calculates directory id (path) for a resource or a file
@@ -19,5 +19,5 @@ interface DirectoryIdCalculator
      * @param Identifiable $obj
      * @return string
      */
-    public function calculateDirectoryId(Identifiable $obj);
+    public function calculateDirectory(Identifiable $obj);
 }

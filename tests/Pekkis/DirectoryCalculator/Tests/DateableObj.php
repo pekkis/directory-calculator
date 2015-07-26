@@ -1,8 +1,8 @@
 <?php
 
-namespace Pekkis\Pathfinder\Tests;
+namespace Pekkis\DirectoryCalculator\Tests;
 
-use Pekkis\Pathfinder\Dateable;
+use Pekkis\DirectoryCalculator\Dateable;
 
 class DateableObj extends IdentifiableObj implements Dateable
 {

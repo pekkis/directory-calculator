@@ -1,6 +1,6 @@
 <?php
 
-namespace Pekkis\Pathfinder;
+namespace Pekkis\DirectoryCalculator;
 
 /**
  * This file is part of the pekkis-pathfinder package.

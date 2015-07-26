@@ -1,23 +1,23 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\Tests\DirectoryIdCalculator;
+namespace Pekkis\Tests\DirectoryCalculator;
 
-use Pekkis\Pathfinder\DirectoryIdCalculator\LeveledDirectoryIdCalculator;
-use Pekkis\Pathfinder\InvalidArgumentException;
-use Pekkis\Pathfinder\LogicException;
-use Pekkis\Pathfinder\Tests\IdentifiableObj;
+use Pekkis\DirectoryCalculator\Strategy\LeveledStrategy;
+use Pekkis\DirectoryCalculator\InvalidArgumentException;
+use Pekkis\DirectoryCalculator\LogicException;
+use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
 
 /**
  * @group storage
  */
-class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
+class LeveledStrategyTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @return array
@@ -46,9 +46,9 @@ class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     public function calculatorShouldCalculateCorrectly($expected, $directoryLevels, $filesPerDirectory, $resourceId)
     {
         $resource = new IdentifiableObj($resourceId);
-        $calculator = new LeveledDirectoryIdCalculator($directoryLevels, $filesPerDirectory);
+        $calculator = new LeveledStrategy($directoryLevels, $filesPerDirectory);
 
-        $this->assertEquals($expected, $calculator->calculateDirectoryId($resource));
+        $this->assertEquals($expected, $calculator->calculateDirectory($resource));
     }
 
     /**
@@ -59,8 +59,8 @@ class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(LogicException::class);
 
         $resource = new IdentifiableObj('xoo');
-        $calc = new LeveledDirectoryIdCalculator();
-        $calc->calculateDirectoryId($resource);
+        $calc = new LeveledStrategy();
+        $calc->calculateDirectory($resource);
     }
 
     /**
@@ -70,7 +70,7 @@ class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $calc = new LeveledDirectoryIdCalculator(0, 50);
+        $calc = new LeveledStrategy(0, 50);
     }
 
     /**
@@ -80,7 +80,7 @@ class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $calc = new LeveledDirectoryIdCalculator(5, 0);
+        $calc = new LeveledStrategy(5, 0);
     }
 
     /**
@@ -89,8 +89,8 @@ class LeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     public function defaultSettingsShouldProduceSaneDirectoryIdInTheDistantFuture()
     {
         $resource = new IdentifiableObj(500066666);
-        $calc = new LeveledDirectoryIdCalculator();
-        $this->assertEquals('5/1/134', $calc->calculateDirectoryId($resource));
+        $calc = new LeveledStrategy();
+        $this->assertEquals('5/1/134', $calc->calculateDirectory($resource));
     }
 
 }

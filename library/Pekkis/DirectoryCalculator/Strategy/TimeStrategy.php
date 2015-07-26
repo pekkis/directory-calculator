@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\DirectoryIdCalculator;
+namespace Pekkis\DirectoryCalculator\Strategy;
 
-use Pekkis\Pathfinder\Dateable;
-use Pekkis\Pathfinder\Identifiable;
-use Pekkis\Pathfinder\LogicException;
+use Pekkis\DirectoryCalculator\Dateable;
+use Pekkis\DirectoryCalculator\Identifiable;
+use Pekkis\DirectoryCalculator\LogicException;
 
 /**
  * Calculates directory id by formatting an objects creation date
  */
-class TimeDirectoryIdCalculator implements DirectoryIdCalculator
+class TimeStrategy implements Strategy
 {
     /**
      * @param string $format
@@ -42,9 +42,9 @@ class TimeDirectoryIdCalculator implements DirectoryIdCalculator
     }
 
     /**
-     * @see DirectoryIdCalculator::calculateDirectoryId
+     * @see DirectoryIdCalculator::calculateDirectory
      */
-    public function calculateDirectoryId(Identifiable $obj)
+    public function calculateDirectory(Identifiable $obj)
     {
         if (!$obj instanceof Dateable) {
             throw new LogicException('Expected a dateable');

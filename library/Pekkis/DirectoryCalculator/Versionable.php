@@ -7,12 +7,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder;
+namespace Pekkis\DirectoryCalculator;
 
-interface Nameable extends Identifiable
+use DateTimeInterface;
+
+interface Versionable extends Identifiable
 {
     /**
-     * @return string Some sort of human understandable name for this thing (not unique, necessarily)
+     * @return DateTimeInterface Returns the version of the object
      */
-    public function getName();
+    public function getVersion();
 }

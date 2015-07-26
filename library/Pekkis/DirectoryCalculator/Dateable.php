@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder;
+namespace Pekkis\DirectoryCalculator;
 
 use DateTimeInterface;
 

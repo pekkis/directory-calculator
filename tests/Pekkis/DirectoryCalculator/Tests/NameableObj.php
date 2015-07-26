@@ -1,8 +1,8 @@
 <?php
 
-namespace Pekkis\Pathfinder\Tests;
+namespace Pekkis\DirectoryCalculator\Tests;
 
-use Pekkis\Pathfinder\Nameable;
+use Pekkis\DirectoryCalculator\Nameable;
 
 class NameableObj extends IdentifiableObj implements Nameable
 {

@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder;
+namespace Pekkis\DirectoryCalculator;
 
-interface UniversallyIdentifiable extends Identifiable
+interface Nameable extends Identifiable
 {
     /**
-     * @return string UUID
+     * @return string Some sort of human understandable name for this thing (not unique, necessarily)
      */
-    public function getUuid();
+    public function getName();
 }

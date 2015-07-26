@@ -1,25 +1,24 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\Tests\DirectoryIdCalculator;
+namespace Pekkis\Tests\DirectoryCalculator;
 
-use Pekkis\Pathfinder\DirectoryIdCalculator\TimeDirectoryIdCalculator;
-use Pekkis\Pathfinder\DirectoryIdCalculator\UniversalLeveledDirectoryIdCalculator;
-use Pekkis\Pathfinder\LogicException;
-use Pekkis\Pathfinder\Tests\UniversallyIdentifiableObj;
-use Pekkis\Pathfinder\Tests\IdentifiableObj;
+use Pekkis\DirectoryCalculator\Strategy\UniversalLeveledStrategy;
+use Pekkis\DirectoryCalculator\LogicException;
+use Pekkis\DirectoryCalculator\Tests\UniversallyIdentifiableObj;
+use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
 use Rhumsaa\Uuid\Uuid;
 
 /**
  * @group storage
  */
-class UniversalLeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
+class UniversalLeveledStrategyTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -30,10 +29,10 @@ class UniversalLeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestC
         $uuid = 'ee3c0c4c-dcec-4dab-93da-c617887eadf3';
         $resource = new UniversallyIdentifiableObj(1, $uuid);
 
-        $calc = new UniversalLeveledDirectoryIdCalculator();
+        $calc = new UniversalLeveledStrategy();
         $this->assertEquals(
             'ee/3c/0c/4c/dc/ec/4d/ab/93/da/c6/17/88/7e/ad/f3',
-            $calc->calculateDirectoryId($resource)
+            $calc->calculateDirectory($resource)
         );
     }
 
@@ -43,9 +42,9 @@ class UniversalLeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestC
     public function throwsExceptionOnNonUniversallyIdentifiable()
     {
         $resource = new IdentifiableObj('xoo');
-        $calc = new UniversalLeveledDirectoryIdCalculator();
+        $calc = new UniversalLeveledStrategy();
         $this->setExpectedException(LogicException::class);
-        $calc->calculateDirectoryId($resource);
+        $calc->calculateDirectory($resource);
     }
 
     /**
@@ -54,9 +53,9 @@ class UniversalLeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestC
     public function throwsExceptionOnInvalidUuid()
     {
         $resource = new UniversallyIdentifiableObj(1, 'xoo-xoo-lusb');
-        $calc = new UniversalLeveledDirectoryIdCalculator();
+        $calc = new UniversalLeveledStrategy();
         $this->setExpectedException(LogicException::class);
-        $calc->calculateDirectoryId($resource);
+        $calc->calculateDirectory($resource);
     }
 
     /**
@@ -67,8 +66,8 @@ class UniversalLeveledDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestC
         $uuid = strtoupper(Uuid::uuid4()->toString());
 
         $resource = new UniversallyIdentifiableObj('xoo', $uuid);
-        $calc = new UniversalLeveledDirectoryIdCalculator();
-        $this->assertInternalType('string', $calc->calculateDirectoryId($resource));
+        $calc = new UniversalLeveledStrategy();
+        $this->assertInternalType('string', $calc->calculateDirectory($resource));
     }
 
 }

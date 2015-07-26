@@ -1,8 +1,8 @@
 <?php
 
-namespace Pekkis\Pathfinder\Tests;
+namespace Pekkis\DirectoryCalculator\Tests;
 
-use Pekkis\Pathfinder\Identifiable;
+use Pekkis\DirectoryCalculator\Identifiable;
 
 class IdentifiableObj implements Identifiable
 {

@@ -1,23 +1,23 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\DirectoryIdCalculator;
+namespace Pekkis\DirectoryCalculator\Strategy;
 
-use Pekkis\Pathfinder\Identifiable;
-use Pekkis\Pathfinder\InvalidArgumentException;
-use Pekkis\Pathfinder\LogicException;
+use Pekkis\DirectoryCalculator\Identifiable;
+use Pekkis\DirectoryCalculator\InvalidArgumentException;
+use Pekkis\DirectoryCalculator\LogicException;
 
 /**
  * Creates directories in a leveled hierarchy based on a numeric file id
  *
  */
-class LeveledDirectoryIdCalculator implements DirectoryIdCalculator
+class LeveledStrategy implements Strategy
 {
     public function __construct($directoryLevels = 3, $filesPerDirectory = 500)
     {
@@ -64,9 +64,9 @@ class LeveledDirectoryIdCalculator implements DirectoryIdCalculator
     }
 
     /**
-     * @see DirectoryIdCalculator::calculateDirectoryId
+     * @see DirectoryIdCalculator::calculateDirectory
      */
-    public function calculateDirectoryId(Identifiable $obj)
+    public function calculateDirectory(Identifiable $obj)
     {
         if (!is_numeric($obj->getId())) {
             throw new LogicException(

@@ -1,7 +1,7 @@
 <?php
 
 $loader = require __DIR__ . '/../vendor/autoload.php';
-$loader->add('Pekkis\\Pathfinder\\Tests\\', __DIR__);
+$loader->add('Pekkis\\DirectoryCalculator\\Tests\\', __DIR__);
 
 gc_enable();
 

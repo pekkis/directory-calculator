@@ -7,14 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder;
+namespace Pekkis\DirectoryCalculator;
 
-use DateTimeInterface;
-
-interface Versionable extends Identifiable
+interface UniversallyIdentifiable extends Identifiable
 {
     /**
-     * @return DateTimeInterface Returns the version of the object
+     * @return string UUID
      */
-    public function getVersion();
+    public function getUuid();
 }

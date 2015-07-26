@@ -1,24 +1,23 @@
 <?php
 
 /**
- * This file is part of the Xi Filelib package.
+ * This file is part of the pekkis-directory-calculator package.
  *
  * For copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Pekkis\Pathfinder\Tests\DirectoryIdCalculator;
+namespace Pekkis\Tests\DirectoryCalculator;
 
-use DateTime;
-use Pekkis\Pathfinder\DirectoryIdCalculator\TimeDirectoryIdCalculator;
-use Pekkis\Pathfinder\LogicException;
-use Pekkis\Pathfinder\Tests\DateableObj;
-use Pekkis\Pathfinder\Tests\IdentifiableObj;
+use Pekkis\DirectoryCalculator\Strategy\TimeStrategy;
+use Pekkis\DirectoryCalculator\LogicException;
+use Pekkis\DirectoryCalculator\Tests\DateableObj;
+use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
 
 /**
  * @group storage
  */
-class TimeDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
+class TimeStrategyTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -41,8 +40,8 @@ class TimeDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     public function calculateShouldCalculateCorrectly($expected, $format, $dateCreated)
     {
         $resource = new DateableObj(1, new \DateTimeImmutable($dateCreated));
-        $calc = new TimeDirectoryIdCalculator($format);
-        $this->assertEquals($expected, $calc->calculateDirectoryId($resource));
+        $calc = new TimeStrategy($format);
+        $this->assertEquals($expected, $calc->calculateDirectory($resource));
     }
 
     /**
@@ -51,8 +50,8 @@ class TimeDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     public function defaultSettingsShouldProduceSaneDirectoryId()
     {
         $resource = new DateableObj(1, new \DateTimeImmutable('1978-03-21 03:03:03'));
-        $calc = new TimeDirectoryIdCalculator();
-        $this->assertEquals('1978/03/21', $calc->calculateDirectoryId($resource));
+        $calc = new TimeStrategy();
+        $this->assertEquals('1978/03/21', $calc->calculateDirectory($resource));
     }
 
     /**
@@ -61,10 +60,10 @@ class TimeDirectoryIdCalculatorTest extends \PHPUnit_Framework_TestCase
     public function throwsExceptionOnNonDateable()
     {
         $resource = new IdentifiableObj('xoo');
-        $calc = new TimeDirectoryIdCalculator();
+        $calc = new TimeStrategy();
 
         $this->setExpectedException(LogicException::class);
-        $calc->calculateDirectoryId($resource);
+        $calc->calculateDirectory($resource);
     }
 
 }

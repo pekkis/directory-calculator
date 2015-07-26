@@ -1,26 +1,16 @@
-# pekkis/temporary-file-manager
+# pekkis/directory-calculator
 
-A manager for application's temporary files. Deletes per-request.
+A library for calculating directories for objects (files)
+
+## Use case
+
+One shall not put too many files (or sub directories) in one directory. Classic problem.
+
+This library calculates more or less safe directories for objects identifiable by something (id, uuid, etc).
 
 ## Quickstart
 
 ```php
 <?php
-
-use Pekkis\TemporaryFileManager\TemporaryFileManager;
-
-$fm = new TemporaryFileManager($someDirectoryPath);
-
-// Add some bytes
-$ret = $fm->add($someContent);
-
-// or add a file and it gets copied
-$ret2 = $fm->addFile($someFilePath);
-
-// Either way, you get a path to the temporary file
-var_dump($ret);
-
-// And when all the manager references are destroyed, typically at the end of a request, the files are deleted too.
-unset($fm);
 
 ```
