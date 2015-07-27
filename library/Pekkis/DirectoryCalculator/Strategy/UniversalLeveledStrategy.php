@@ -23,7 +23,7 @@ class UniversalLeveledStrategy implements Strategy
     private $uuidRegex = '/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i';
 
     /**
-     * @see DirectoryIdCalculator::calculateDirectory
+     * @see DirectoryCalculator::calculateDirectory
      */
     public function calculateDirectory(Identifiable $obj)
     {

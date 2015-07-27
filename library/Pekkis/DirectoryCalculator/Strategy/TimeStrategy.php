@@ -42,7 +42,7 @@ class TimeStrategy implements Strategy
     }
 
     /**
-     * @see DirectoryIdCalculator::calculateDirectory
+     * @see DirectoryCalculator::calculateDirectory
      */
     public function calculateDirectory(Identifiable $obj)
     {
