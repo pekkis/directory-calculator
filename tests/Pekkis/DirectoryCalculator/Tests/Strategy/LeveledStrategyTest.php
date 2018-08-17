@@ -13,11 +13,12 @@ use Pekkis\DirectoryCalculator\Strategy\LeveledStrategy;
 use Pekkis\DirectoryCalculator\InvalidArgumentException;
 use Pekkis\DirectoryCalculator\LogicException;
 use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group storage
  */
-class LeveledStrategyTest extends \PHPUnit_Framework_TestCase
+class LeveledStrategyTest extends TestCase
 {
     /**
      * @return array
@@ -56,7 +57,7 @@ class LeveledStrategyTest extends \PHPUnit_Framework_TestCase
      */
     public function throwsExceptionOnNonNumericFileId()
     {
-        $this->setExpectedException(LogicException::class);
+        $this->expectException(LogicException::class);
 
         $resource = new IdentifiableObj('xoo');
         $calc = new LeveledStrategy();
@@ -68,7 +69,7 @@ class LeveledStrategyTest extends \PHPUnit_Framework_TestCase
      */
     public function wontInstantiateWithInvalidDirectoryLevels()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $calc = new LeveledStrategy(0, 50);
     }
@@ -78,7 +79,7 @@ class LeveledStrategyTest extends \PHPUnit_Framework_TestCase
      */
     public function wontInstantiateWithInvalidFilesPerDirectory()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $calc = new LeveledStrategy(5, 0);
     }

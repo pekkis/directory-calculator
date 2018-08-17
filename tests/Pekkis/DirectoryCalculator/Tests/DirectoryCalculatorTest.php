@@ -4,9 +4,10 @@ namespace Pekkis\DirectoryCalculator\Tests;
 
 use Pekkis\DirectoryCalculator\DirectoryCalculator;
 use Pekkis\DirectoryCalculator\Strategy\Strategy;
+use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 
-class DirectoryCalculatorTest extends \PHPUnit_Framework_TestCase
+class DirectoryCalculatorTest extends TestCase
 {
     /**
      * @test

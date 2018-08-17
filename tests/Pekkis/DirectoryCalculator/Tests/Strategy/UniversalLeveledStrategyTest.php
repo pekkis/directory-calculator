@@ -13,12 +13,13 @@ use Pekkis\DirectoryCalculator\Strategy\UniversalLeveledStrategy;
 use Pekkis\DirectoryCalculator\LogicException;
 use Pekkis\DirectoryCalculator\Tests\UniversallyIdentifiableObj;
 use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
-use Rhumsaa\Uuid\Uuid;
+use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @group storage
  */
-class UniversalLeveledStrategyTest extends \PHPUnit_Framework_TestCase
+class UniversalLeveledStrategyTest extends TestCase
 {
 
     /**
@@ -43,7 +44,7 @@ class UniversalLeveledStrategyTest extends \PHPUnit_Framework_TestCase
     {
         $resource = new IdentifiableObj('xoo');
         $calc = new UniversalLeveledStrategy();
-        $this->setExpectedException(LogicException::class);
+        $this->expectException(LogicException::class);
         $calc->calculateDirectory($resource);
     }
 
@@ -54,7 +55,7 @@ class UniversalLeveledStrategyTest extends \PHPUnit_Framework_TestCase
     {
         $resource = new UniversallyIdentifiableObj(1, 'xoo-xoo-lusb');
         $calc = new UniversalLeveledStrategy();
-        $this->setExpectedException(LogicException::class);
+        $this->expectException(LogicException::class);
         $calc->calculateDirectory($resource);
     }
 

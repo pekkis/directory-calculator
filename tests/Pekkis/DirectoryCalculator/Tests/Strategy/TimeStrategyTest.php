@@ -13,11 +13,12 @@ use Pekkis\DirectoryCalculator\Strategy\TimeStrategy;
 use Pekkis\DirectoryCalculator\LogicException;
 use Pekkis\DirectoryCalculator\Tests\DateableObj;
 use Pekkis\DirectoryCalculator\Tests\IdentifiableObj;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group storage
  */
-class TimeStrategyTest extends \PHPUnit_Framework_TestCase
+class TimeStrategyTest extends TestCase
 {
 
     /**
@@ -62,7 +63,7 @@ class TimeStrategyTest extends \PHPUnit_Framework_TestCase
         $resource = new IdentifiableObj('xoo');
         $calc = new TimeStrategy();
 
-        $this->setExpectedException(LogicException::class);
+        $this->expectException(LogicException::class);
         $calc->calculateDirectory($resource);
     }
 
